@@ -2,22 +2,14 @@
 host i-* mi-*
     ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
 
-host arch-aur.alan-jenkins.com
-    Hostname github.com
-    User git
-    IdentityFile ~/.ssh/ssh_keys/id_aur
-
-host github.alan-jenkins.com
-    Hostname github.com
-    User git
-    IdentityFile ~/.ssh/ssh_keys/id_personal
-
-host bitbucket.alan-jenkins.com
-    Hostname bitbucket.org
-    User git
-    IdentityFile ~/.ssh/ssh_keys/id_personal
-
-host gitlab.alan-jenkins.com
+host gitlab.com
     Hostname gitlab.com
     User git
-    IdentityFile ~/.ssh/ssh_keys/id_personal
+    Preferredauthentications publickey
+    IdentityFile ~/.ssh/gitkey
+
+host github.com
+    Hostname github.com
+    User git
+    Preferredauthentications publickey
+    IdentityFile ~/.ssh/gitkey
