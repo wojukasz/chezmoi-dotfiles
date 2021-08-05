@@ -7,6 +7,28 @@ source ~/.config/zshrc.d/bash_helpers.zsh
 source ~/.config/zshrc.d/zsh_functions.zsh
 source ~/.config/zshrc.d/zsh_settings.zsh
 
-if command -v tmux &> /devnull && [ -z "$TMUX" ]; then
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# start Tmux when terminal is booted
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
-fi/
+fi
+
+### Windows WSL2 weirdnes ###
+if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+
+    # synchronize time on start of WSL
+    sudo hwclock --hctosys
+
+    # Start Docker daemon automatically when logging in if not running.
+    RUNNING=`ps aux | grep dockerd | grep -v grep`
+    if [ -z "$RUNNING" ]; then
+        sudo dockerd > /dev/null 2>&1 &
+        disown
+    fi
+
+    # NVM 
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi

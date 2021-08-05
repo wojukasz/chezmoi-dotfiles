@@ -12,7 +12,7 @@ export AWS_DEFAULT_REGION='eu-west-2'
 export EDITOR='nvim'
 
 # Set the Go Path
-export GOPATH="/home/$USER/go"
+export GOPATH="$HOME/go"
 
 # Make shell history ignore duplicated commands and ignore any command
 # starting with a space.
@@ -29,6 +29,7 @@ export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:/home/$USER/go/bin"
 export PATH="$PATH:/home/$USER/bin"
 export PATH="$PATH:/home/$USER/.local/bin"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$PATH:/home/$USER/.gem/ruby/2.7.0/bin"
 export PATH="$PATH:/home/$USER/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/home/$USER/.gem/ruby/2.5.0/bin"
@@ -40,3 +41,7 @@ export PATH="$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/
 export TODO_DIR="$HOME/gdrive/todo/"
 export TODO_FILE="$HOME/gdrive/todo/todo.txt"
 export DONE_FILE="$HOME/gdrive/todo/done.txt"
+
+# nnn Environment variables
+export NNN_OPTS="aedF"
+export NNN_BMS="D:~/Documents;d:~/Downloads;g:~/git;h:~;"

@@ -1,15 +1,23 @@
-# SSH over Session Manager
-host i-* mi-*
-    ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+#
+# dotphiles : https://github.com/dotphiles/dotphiles
+#
+# Description:  Config for ssh client
+#
+# Authors:
+#   Ben O'Hara <bohara@gmail.com>
+#
 
-host gitlab.com
-    Hostname gitlab.com
-    User git
-    Preferredauthentications publickey
-    IdentityFile ~/.ssh/gitkey
+# Global Settings
+ForwardAgent yes
+#VisualHostKey yes
+#HashKnownHosts no
+#ConnectTimeout 2
+IdentitiesOnly yes
 
-host github.com
-    Hostname github.com
-    User git
-    Preferredauthentications publickey
-    IdentityFile ~/.ssh/gitkey
+Host gitlab.com
+  Preferredauthentications publickey
+  IdentityFile ~/.ssh/gitkey
+
+Host github.com
+  Preferredauthentications publickey
+  IdentityFile ~/.ssh/gitkey

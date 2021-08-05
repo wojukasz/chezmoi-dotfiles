@@ -38,13 +38,8 @@ alias keycl='ssh-add -D'
 alias keyp='ssh-add ~/.ssh/ssh_keys/id_personal'
 alias keypa='ssh-add ~/.ssh/ssh_keys/id_alan-aws'
 alias keypo='ssh-add ~/.ssh/ssh_keys/id_personal_old'
+alias keyk='ssh-add ~/.ssh/ssh_keys/id_krystal'
 alias kmse='export EYAML_CONFIG=$PWD/.kms-eyaml.yaml'
-
-# Servicenow script aliases
-alias snowrep='~/git/bashton-servicenow/reports.py'
-alias snowtick='~/git/bashton-servicenow/view-ticket.py --nobox'
-alias snowticks='~/git/bashton-servicenow/sn-tickets.py --team mario'
-alias snowticks-luigi="~/git/bashton-servicenow/sn-tickets.py --team luigi"
 
 # Taskwarrior aliases
 alias tw='task +work'
@@ -57,6 +52,9 @@ if command -v nvim &>/dev/null; then
 elif command -v vim &>/dev/null; then
   alias vi='vim'
 fi
+
+# Misc aliases
+alias j='just'
 
 if uname -a | grep 'Darwin' &> /dev/null; then
   alias ll='ls -G';
