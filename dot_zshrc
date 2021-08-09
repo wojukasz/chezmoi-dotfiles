@@ -18,7 +18,13 @@ fi
 if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
 
     # synchronize time on start of WSL
-    sudo hwclock --hctosys
+    # sudo hwclock --hctosys
+
+   # if [ -z "$SSH_AUTH_SOCK" ] ; then
+   if [ -z "$SSH_AGENT_PID" ]; then
+      eval `ssh-agent -s`
+      ssh-add ~/.ssh/gitkey
+   fi
 
     # Start Docker daemon automatically when logging in if not running.
     RUNNING=`ps aux | grep dockerd | grep -v grep`
