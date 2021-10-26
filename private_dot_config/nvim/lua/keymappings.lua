@@ -15,13 +15,6 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
 
--- Compe mappings
-vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', {expr = true, noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<CR>', "compe#confirm('<CR>')", {expr = true, noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-e>', "compe#close('<C-e>')", {expr = true, noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-f>', "compe#scroll({ 'delta': +4 })", {expr = true, noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-d>', "compe#scroll({ 'delta': -4 })", {expr = true, noremap = true, silent = true})
-
 -- Better nav for omnicomplete
 vim.api.nvim_set_keymap('i', '<C-j>', '(\"\\<C-n>\")', {noremap = true, expr = true})
 vim.api.nvim_set_keymap('i', '<C-k>', '(\"\\<C-p>\")', {noremap = true, expr = true})
@@ -32,7 +25,7 @@ vim.g.mapleader = ' '
 
 -- Setup leader based mappings with which-key so they are documented and
 -- a cheatsheet is presented when leader is activated
-function whichkey_mappings()
+function WHICHKEY_MAPPINGS()
         local wk = require("which-key")
 
         wk.register(
@@ -102,7 +95,7 @@ function whichkey_mappings()
                                 i     = { "<cmd>Telescope media_files<cr>",                                                                             "Media Files" },
                                 m     = { "<cmd>Telescope marks<cr>",                                                                                   "Marks" },
                                 o     = { "<cmd>Telescope vim_options<cr>",                                                                             "Vim Options" },
-                                p     = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>",                                               "Projects" },
+                                p     = { "<cmd>Telescope projects<cr>",                                                                                "Projects" },
                                 r     = { "<cmd>Telescope registers<cr>",                                                                               "Registers" },
                                 t     = { "<cmd>Telescope live_grep<cr>",                                                                               "Text" },
                                 u     = { "<cmd>Telescope colorscheme<cr>",                                                                             "Colorschemes" },
@@ -162,7 +155,7 @@ function whichkey_mappings()
                                 l = { "<cmd>Git log<cr>",                 "Log" },
                                 p = { "<cmd>Gina push<cr>",               "Push" },
                                 s = { "<cmd>Git<cr>",                     "Status" },
-                                t = { "<cmd>!gh pr create --web<cr>",     "Pull request" },
+                                t = { "<cmd>terminal gh pr create --web<cr>",     "Pull request" },
                                 m = { "<cmd>GitMessenger<cr>",            "Line commit history" },
                                 w = {
                                         name = "+git worktree",
