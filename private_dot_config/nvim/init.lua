@@ -10,7 +10,7 @@ require('keymappings')
 -- Plugin configs
 require('colorscheme-tokyonight')
 require('crates')
-require('gitlinker')
+-- require('gitlinker')
 require('lsp-trouble')
 require('lspconfig-config')
 require('navigator')

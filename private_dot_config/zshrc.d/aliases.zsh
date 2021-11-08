@@ -31,8 +31,6 @@ else
 fi
 
 # SSH key aliases
-alias keycl='ssh-add -D'
-alias keyg='ssh-add ~/.ssh/githey'
 alias kmse='export EYAML_CONFIG=$PWD/.kms-eyaml.yaml'
 
 # Taskwarrior aliases
@@ -62,8 +60,8 @@ else
     alias ls='exa';
     alias lt='exa --tree --git --long';
   else
-    alias ll='ls --color=auto -l';
-    alias ls='ls --color=auto';
+    alias ll='ls -a --color=auto -l';
+    alias ls='ls -a --color=auto';
     if command -v tree &>/dev/null; then
       alias lt='tree -C';
     fi
