@@ -17,14 +17,18 @@ fi
 ### Windows WSL2 weirdnes ###
 if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
 
-    # synchronize time on start of WSL
-    # sudo hwclock --hctosys
-
    # if [ -z "$SSH_AUTH_SOCK" ] ; then
    if [ -z "$SSH_AGENT_PID" ]; then
       eval `ssh-agent -s`
       ssh-add ~/.ssh/gitkey
    fi
+
+    # if [ -z "$SSH_AGENT_PID" ]; then
+    #     eval `ssh-agent -s`
+    #     if [ "$(ssh-add -l)" &>/dev/null ] ; then
+    #         ssh-add ~/.ssh/gitkey
+    #     fi
+    # fi
 
     # Start Docker daemon automatically when logging in if not running.
     RUNNING=`ps aux | grep dockerd | grep -v grep`
@@ -34,7 +38,26 @@ if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
     fi
 
     # NVM 
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    # export NVM_DIR="$HOME/.nvm"
+    # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
+
+# cd $WSL
+
+export GPG_TTY=$(tty)
+alias gel="cd ~/git/gel"
+
+. $HOME/git/aws-cli-helpers/aws-helpers.sh
+
+
+# https://github.com/bash-my-aws/bash-my-aws/#installation
+export PATH="$PATH:$HOME/.bash-my-aws/bin"
+source ~/.bash-my-aws/aliases
+
+# For ZSH users, uncomment the following two lines:
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
+source ~/.bash-my-aws/bash_completion.sh
+
