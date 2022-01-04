@@ -1,0 +1,5 @@
+export:  
+gpg --output backupkeys.pgp --armor --export-secret-keys --export-options export-backup user@email
+
+import:  
+gpg --import-options restore --import ./backupkeys.pgp
