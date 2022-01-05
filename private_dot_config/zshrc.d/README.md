@@ -1,0 +1,3 @@
+update plugins
+
+zinit update
