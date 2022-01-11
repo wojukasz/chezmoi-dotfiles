@@ -69,9 +69,9 @@ vim.g.mapleader = " " --}}}
 -- Setup leader based mappings with which-key so they are documented and
 -- a cheatsheet is presented when leader is activated
 wk.register({
-	-- Goyo maps{{{
-	z = { "<cmd>Goyo 100%x100%<cr>", "Start Goyo fullscreen" },
-	Z = { "<cmd>Goyo<cr>", "Toggle Goyo" }, --}}}
+	-- Zenmode maps{{{
+	z = { "<cmd>ZenMode<cr>", "Toggle ZenMode" },
+	--}}}
 
 	-- Splitting maps (ported from the old whichkey bindings{{{
 	h = { "<C-W>s", "Split horizontally" },
@@ -158,10 +158,6 @@ wk.register({
 			"<cmd>Telescope diagnostics bufnr=0<cr>",
 			"Document Diagnostics",
 		},
-		e = {
-			"<cmd>Telescope frecency<cr>",
-			"Frecently edited files",
-		},
 		f = {
 			"<cmd>Telescope find_files<cr>",
 			"Files",
@@ -169,10 +165,6 @@ wk.register({
 		h = {
 			"<cmd>Telescope command_history<cr>",
 			"Command History",
-		},
-		i = {
-			"<cmd>Telescope media_files<cr>",
-			"Media Files",
 		},
 		j = {
 			"<cmd>JqxList<cr>",
@@ -203,7 +195,7 @@ wk.register({
 			"Colorschemes",
 		},
 		w = {
-			"<cmd>Telescope file_browser<cr>",
+			"<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>",
 			"File browser",
 		},
 		x = {
@@ -245,18 +237,12 @@ wk.register({
 	-- Markdown Preview mappings{{{
 	M = { "<cmd>MarkdownPreviewToggle<cr>", "Preview Markdown" }, --}}}
 
-	-- Treesitter mappings{{{
-	T = {
-		name = "+Treesitter",
-		b = { "<cmd>lua require('nvim-biscuits').toggle_biscuits()<cr>", "Toggle biscuits" },
-	}, --}}}
-
 	-- Git mappings (all start with g){{{
 	g = {
 		name = "+git",
 		B = { "<cmd>GBrowse<cr>", "Browse" },
 		a = { "<cmd>Gwrite<cr>", "Add" },
-		b = { "<cmd>Gblame<cr>", "Blame" },
+		b = { "<cmd>Git blame<cr>", "Blame" },
 		c = {
 			name = "+commit",
 			c = { "<cmd>Git commit<cr>", "Commit" },
@@ -264,7 +250,7 @@ wk.register({
 		},
 		d = { "<cmd>Git diff<cr>", "Diff" },
 		l = { "<cmd>Git log<cr>", "Log" },
-		p = { "<cmd>Git push<cr>", "Push" },
+		p = { "<cmd>Git! push<cr>", "Push" },
 		s = { "<cmd>Git<cr>", "Status" },
 		t = { "<cmd>terminal gh pr create --web<cr>", "Pull request" },
 		m = { "<cmd>GitMessenger<cr>", "Line commit history" },
@@ -274,6 +260,18 @@ wk.register({
 			s = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Switch" },
 		},
 	}, --}}}
+
+	-- Hop Mappings {{{
+	["<space>"] = {
+		name = "+hop",
+		w = { "<cmd>HopWord<cr>", "Hop Word" },
+		p = { "<cmd>HopPattern<cr>", "Hop Pattern" },
+		c = { "<cmd>HopChar1<cr>", "Hop 1 Character" },
+		C = { "<cmd>HopChar2<cr>", "Hop 2 Character" },
+		l = { "<cmd>HopLine<cr>", "Hop Line" },
+		L = { "<cmd>HopLineStart<cr>", "Hop Line Start" },
+	},
+	-- }}}
 
 	-- Quickfix mappings (all start with q){{{
 	q = {

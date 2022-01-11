@@ -31,6 +31,14 @@ else
 fi
 
 # SSH key aliases
+alias key='ssh-add ~/.ssh/ssh_keys/id_bashton_alan'
+alias keyaur="ssh-add ~/.ssh/ssh_keys/id_aur"
+alias keyb='ssh-add ~/.ssh/ssh_keys/id_bashton'
+alias keycl='ssh-add -D'
+alias keyp='ssh-add ~/.ssh/ssh_keys/id_personal'
+alias keypa='ssh-add ~/.ssh/ssh_keys/id_alan-aws'
+alias keypo='ssh-add ~/.ssh/ssh_keys/id_personal_old'
+alias keyk='ssh-add ~/.ssh/ssh_keys/id_krystal'
 alias kmse='export EYAML_CONFIG=$PWD/.kms-eyaml.yaml'
 
 # Taskwarrior aliases
@@ -60,8 +68,8 @@ else
     alias ls='exa';
     alias lt='exa --tree --git --long';
   else
-    alias ll='ls -a --color=auto -l';
-    alias ls='ls -a --color=auto';
+    alias ll='ls --color=auto -l';
+    alias ls='ls --color=auto';
     if command -v tree &>/dev/null; then
       alias lt='tree -C';
     fi

@@ -111,6 +111,7 @@ packer.startup(function()
 		requires = {
 			"ThePrimeagen/git-worktree.nvim",
 			"ahmedkhalf/project.nvim",
+			"crispgm/telescope-heading.nvim",
 			"jvgrootveld/telescope-zoxide",
 			"nvim-lua/plenary.nvim",
 			"nvim-lua/popup.nvim",
@@ -118,7 +119,7 @@ packer.startup(function()
 			"nvim-telescope/telescope-fzy-native.nvim",
 			"nvim-telescope/telescope-github.nvim",
 			"nvim-telescope/telescope-packer.nvim",
-			"crispgm/telescope-heading.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
 			{
 				"kyazdani42/nvim-web-devicons",
 				opt = true,
@@ -234,7 +235,8 @@ packer.startup(function()
 	use({
 		"folke/twilight.nvim",
 		config = get_plugin_config("twilight"),
-	}) --}}}
+	})
+	--}}}
 	-- Markdown previews{{{
 	use({
 		"iamcco/markdown-preview.nvim",
@@ -244,9 +246,6 @@ packer.startup(function()
 		ft = { "markdown" },
 		config = get_plugin_config("markdown-preview"),
 	}) --}}}
-	-- Lightspeed motions{{{
-	-- TODO: Learn how to use this plugin properly and decide whether or not it is safe to use with macros...
-	use({ "ggandor/lightspeed.nvim", event = "BufReadPre" }) --}}}
 	-- Unimpaired shortcuts{{{
 	use({ "tpope/vim-unimpaired" }) --}}}
 	-- Repeat{{{
@@ -311,6 +310,12 @@ packer.startup(function()
 			"jbyuki/nabla.nvim", -- Optional. See Extra Features
 		},
 		config = get_plugin_config("pandoc"),
+	})
+	-- }}}
+	-- Hop {{{
+	use({
+		"phaazon/hop.nvim",
+		config = get_plugin_config("hop"),
 	})
 	-- }}}
 
